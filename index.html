@@ -12,40 +12,57 @@
 
 body{
     font-family:'Poppins',sans-serif;
-    background:radial-gradient(circle,#0a0a0a,#000);
+    background:#0a0a0a;
     color:white;
-    margin-left:200px;
 }
 
-/* 🔥 SIDEBAR */
+/* 🔥 TOP BAR */
+.topbar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:15px;
+    background:#000;
+}
+
+/* ☰ button */
+.menu-btn{
+    font-size:25px;
+    cursor:pointer;
+}
+
+/* 🔥 SIDEBAR (hidden by default) */
 nav{
     position:fixed;
-    left:0;
+    left:-220px;
     top:0;
     width:200px;
     height:100vh;
     background:#000;
     padding:20px;
-    display:flex;
-    flex-direction:column;
+    transition:0.3s;
 }
+
+/* show sidebar */
+nav.active{
+    left:0;
+}
+
 nav h2{
     color:#00ffff;
     margin-bottom:30px;
 }
+
 nav a{
+    display:block;
     color:white;
     text-decoration:none;
-    margin:10px 0;
+    margin:15px 0;
     font-size:18px;
 }
+
 nav a:hover{
     color:#00ffff;
-    text-shadow:0 0 10px #00ffff;
-}
-nav a.active{
-    color:#00ffff;
-    font-weight:bold;
 }
 
 /* HERO */
@@ -57,10 +74,12 @@ nav a.active{
     align-items:center;
     text-align:center;
 }
+
 .hero h1{
-    font-size:50px;
+    font-size:40px;
     color:#00ffff;
 }
+
 .hero button{
     margin-top:20px;
     padding:12px 25px;
@@ -68,10 +87,9 @@ nav a.active{
     border:none;
     color:white;
     cursor:pointer;
-    box-shadow:0 0 15px red;
 }
 
-/* 🔥 SLIDER */
+/* SLIDER */
 .slider{
     position:relative;
     overflow:hidden;
@@ -82,12 +100,12 @@ nav a.active{
 }
 .slides img{
     width:100%;
-    height:300px;
+    height:250px;
     object-fit:cover;
 }
 
 /* buttons */
-.prev, .next{
+.prev,.next{
     position:absolute;
     top:50%;
     transform:translateY(-50%);
@@ -102,9 +120,11 @@ nav a.active{
 
 /* SECTION */
 .section{
-    padding:50px;
+    padding:40px;
     text-align:center;
 }
+
+/* CARD */
 .cards{
     display:flex;
     flex-wrap:wrap;
@@ -112,44 +132,32 @@ nav a.active{
 }
 .card{
     background:#111;
-    margin:15px;
-    padding:20px;
-    width:250px;
-    border-radius:10px;
-    transition:0.3s;
-}
-.card:hover{
-    transform:scale(1.05);
-    box-shadow:0 0 15px #00ffff;
-}
-
-/* VIDEOS */
-iframe{
-    border:none;
-    border-radius:10px;
     margin:10px;
-}
-
-/* FOOTER */
-footer{
     padding:20px;
-    text-align:center;
-    background:#000;
+    width:200px;
+    border-radius:10px;
 }
 
-/* smooth scroll */
-html{
-    scroll-behavior:smooth;
+/* VIDEO */
+iframe{
+    margin:10px;
+    border-radius:10px;
 }
 </style>
 </head>
 
 <body>
 
-<!-- 🔥 SIDEBAR -->
-<nav>
+<!-- 🔥 TOP BAR -->
+<div class="topbar">
+    <span class="menu-btn" onclick="toggleMenu()">☰</span>
     <h2>🎮 Jins Gaming</h2>
-    <a href="#" class="active">🏠 Home</a>
+</div>
+
+<!-- 🔥 SIDEBAR -->
+<nav id="menu">
+    <h2>🎮 Menu</h2>
+    <a href="#">🏠 Home</a>
     <a href="#videos">🎥 Videos</a>
     <a href="#about">👑 About</a>
 </nav>
@@ -158,15 +166,15 @@ html{
 <section class="hero">
     <h1>🔥 Jins Gaming Pro 🔥</h1>
     <p>Gameplay | Funny | Live 🔴</p>
-    <button onclick="window.open('https://youtube.com')">🔴 Subscribe Now</button>
+    <button onclick="window.open('https://youtube.com')">Subscribe</button>
 </section>
 
-<!-- 🔥 SLIDER -->
+<!-- SLIDER -->
 <section class="slider">
     <div class="slides" id="slide">
-        <img src="https://picsum.photos/1200/300?1">
-        <img src="https://picsum.photos/1200/300?2">
-        <img src="https://picsum.photos/1200/300?3">
+        <img src="https://picsum.photos/800/250?1">
+        <img src="https://picsum.photos/800/250?2">
+        <img src="https://picsum.photos/800/250?3">
     </div>
     <button class="prev" onclick="prevSlide()">❮</button>
     <button class="next" onclick="nextSlide()">❯</button>
@@ -178,68 +186,47 @@ html{
     <div class="cards">
         <div class="card">🎯 BGMI Tips</div>
         <div class="card">😂 Funny Moments</div>
-        <div class="card">🔥 Pro Gameplay</div>
+        <div class="card">🔥 Gameplay</div>
     </div>
 </section>
 
 <!-- VIDEOS -->
 <section class="section" id="videos">
-    <h2>🎥 Latest Videos</h2>
-
-    <iframe width="300" height="170"
-    src="https://www.youtube.com/embed/dQw4w9WgXcQ"></iframe>
-
+    <h2>🎥 Videos</h2>
     <iframe width="300" height="170"
     src="https://www.youtube.com/embed/dQw4w9WgXcQ"></iframe>
 </section>
 
 <!-- ABOUT -->
 <section class="section" id="about">
-    <h2>👑 About Me</h2>
-    <p>I am Jins - Gaming Creator 🔥</p>
+    <h2>👑 About</h2>
+    <p>Jins Gaming 🔥</p>
 </section>
 
-<!-- FOOTER -->
-<footer>
-    <p>© 2026 Jins Gaming Pro</p>
-</footer>
-
-<!-- 🔥 JS -->
 <script>
-let index = 0;
-const total = 3;
+/* MENU TOGGLE */
+function toggleMenu(){
+    document.getElementById("menu").classList.toggle("active");
+}
 
-/* auto slide */
-let autoSlide = setInterval(nextSlide,3000);
+/* SLIDER */
+let index=0;
+const total=3;
 
 function showSlide(){
-    const slides = document.getElementById("slide");
-    slides.style.transform = "translateX(" + (-index * 100) + "%)";
+    document.getElementById("slide").style.transform=
+    "translateX("+(-index*100)+"%)";
 }
 
 function nextSlide(){
-    index = (index + 1) % total;
+    index=(index+1)%total;
     showSlide();
 }
 
 function prevSlide(){
-    index = (index - 1 + total) % total;
+    index=(index-1+total)%total;
     showSlide();
 }
-
-/* pause on hover */
-const slider = document.querySelector(".slider");
-slider.addEventListener("mouseover", ()=>clearInterval(autoSlide));
-slider.addEventListener("mouseout", ()=>autoSlide = setInterval(nextSlide,3000));
-
-/* active menu */
-const links = document.querySelectorAll("nav a");
-links.forEach(link=>{
-    link.addEventListener("click", function(){
-        links.forEach(l=>l.classList.remove("active"));
-        this.classList.add("active");
-    });
-});
 </script>
 
 </body>
