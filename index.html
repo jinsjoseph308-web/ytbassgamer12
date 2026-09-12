@@ -142,7 +142,7 @@ iframe{
 
 <!-- 🔥 TOP BAR -->
 <div class="topbar">
-    <span class="menu-btn" onclick="toggleMenu()">☰</span>
+    <span class="menu-btn" id="menuBtn" onclick="toggleMenu()">☰</span>
     <h2 style="color:#00ffff;">🎮 Jins Gaming</h2>
 </div>
 
@@ -197,10 +197,28 @@ iframe{
 
 <!-- JS -->
 <script>
-/* MENU TOGGLE */
+/* MENU TOGGLE + ICON CHANGE */
 function toggleMenu(){
-    document.getElementById("menu").classList.toggle("active");
+    const menu = document.getElementById("menu");
+    const btn = document.getElementById("menuBtn");
+
+    menu.classList.toggle("active");
+
+    if(menu.classList.contains("active")){
+        btn.innerHTML = "✖";
+    } else {
+        btn.innerHTML = "☰";
+    }
 }
+
+/* CLOSE MENU WHEN CLICK LINK */
+const links = document.querySelectorAll("nav a");
+links.forEach(link=>{
+    link.addEventListener("click", ()=>{
+        document.getElementById("menu").classList.remove("active");
+        document.getElementById("menuBtn").innerHTML = "☰";
+    });
+});
 
 /* SLIDER */
 let index=0;
