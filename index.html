@@ -19,17 +19,23 @@ body{
 /* 🔥 TOP BAR */
 .topbar{
     display:flex;
-    justify-content:space-between;
     align-items:center;
     padding:15px;
     background:#000;
+    position:relative;
 }
 .menu-btn{
     font-size:25px;
     cursor:pointer;
 }
+.topbar h2{
+    position:absolute;
+    left:50%;
+    transform:translateX(-50%);
+    color:#00ffff;
+}
 
-/* 🔥 SIDEBAR (hidden) */
+/* 🔥 SIDEBAR */
 nav{
     position:fixed;
     left:-220px;
@@ -130,10 +136,20 @@ nav a:hover{
     border-radius:10px;
 }
 
-/* VIDEO */
+/* VIDEO CENTER */
 iframe{
-    margin:10px;
+    display:block;
+    margin:20px auto;
     border-radius:10px;
+}
+
+/* FOOTER */
+footer{
+    text-align:center;
+    padding:20px;
+    background:#000;
+    color:#aaa;
+    font-size:14px;
 }
 </style>
 </head>
@@ -143,7 +159,7 @@ iframe{
 <!-- 🔥 TOP BAR -->
 <div class="topbar">
     <span class="menu-btn" id="menuBtn" onclick="toggleMenu()">☰</span>
-    <h2 style="color:#00ffff;">🎮 Jins Gaming</h2>
+    <h2>🎮 Jins Gaming</h2>
 </div>
 
 <!-- 🔥 SIDEBAR -->
@@ -195,9 +211,13 @@ iframe{
     <p>Jins Gaming 🔥</p>
 </section>
 
+<!-- 🔥 FOOTER -->
+<footer>
+    © 2026 YT Bass Gaming
+</footer>
+
 <!-- JS -->
 <script>
-/* MENU TOGGLE + ICON CHANGE */
 function toggleMenu(){
     const menu = document.getElementById("menu");
     const btn = document.getElementById("menuBtn");
@@ -211,7 +231,6 @@ function toggleMenu(){
     }
 }
 
-/* CLOSE MENU WHEN CLICK LINK */
 const links = document.querySelectorAll("nav a");
 links.forEach(link=>{
     link.addEventListener("click", ()=>{
