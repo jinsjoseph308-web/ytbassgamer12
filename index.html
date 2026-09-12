@@ -12,26 +12,24 @@
 
 body{
     font-family:'Poppins',sans-serif;
-    background:#0a0a0a;
+    background:radial-gradient(circle,#0a0a0a,#000);
     color:white;
 }
 
 /* 🔥 TOP BAR */
 .topbar{
     display:flex;
-    align-items:center;
     justify-content:space-between;
+    align-items:center;
     padding:15px;
     background:#000;
 }
-
-/* ☰ button */
 .menu-btn{
     font-size:25px;
     cursor:pointer;
 }
 
-/* 🔥 SIDEBAR (hidden by default) */
+/* 🔥 SIDEBAR (hidden) */
 nav{
     position:fixed;
     left:-220px;
@@ -40,10 +38,10 @@ nav{
     height:100vh;
     background:#000;
     padding:20px;
+    display:flex;
+    flex-direction:column;
     transition:0.3s;
 }
-
-/* show sidebar */
 nav.active{
     left:0;
 }
@@ -52,15 +50,12 @@ nav h2{
     color:#00ffff;
     margin-bottom:30px;
 }
-
 nav a{
-    display:block;
     color:white;
     text-decoration:none;
-    margin:15px 0;
+    margin:10px 0;
     font-size:18px;
 }
-
 nav a:hover{
     color:#00ffff;
 }
@@ -74,12 +69,10 @@ nav a:hover{
     align-items:center;
     text-align:center;
 }
-
 .hero h1{
     font-size:40px;
     color:#00ffff;
 }
-
 .hero button{
     margin-top:20px;
     padding:12px 25px;
@@ -104,7 +97,6 @@ nav a:hover{
     object-fit:cover;
 }
 
-/* buttons */
 .prev,.next{
     position:absolute;
     top:50%;
@@ -151,7 +143,7 @@ iframe{
 <!-- 🔥 TOP BAR -->
 <div class="topbar">
     <span class="menu-btn" onclick="toggleMenu()">☰</span>
-    <h2>🎮 Jins Gaming</h2>
+    <h2 style="color:#00ffff;">🎮 Jins Gaming</h2>
 </div>
 
 <!-- 🔥 SIDEBAR -->
@@ -203,6 +195,7 @@ iframe{
     <p>Jins Gaming 🔥</p>
 </section>
 
+<!-- JS -->
 <script>
 /* MENU TOGGLE */
 function toggleMenu(){
@@ -214,7 +207,7 @@ let index=0;
 const total=3;
 
 function showSlide(){
-    document.getElementById("slide").style.transform=
+    document.getElementById("slide").style.transform =
     "translateX("+(-index*100)+"%)";
 }
 
